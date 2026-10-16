@@ -1,0 +1,8 @@
+# robots.txt for Acme Garage Doors Niagara
+# https://acmegaragedoors.ca/
+
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://acmegaragedoors.ca/sitemap.xml
