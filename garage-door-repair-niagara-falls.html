@@ -31,17 +31,27 @@
       "url": "https://acmegaragedoors.ca",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "4520 Queen Street",
+        "streetAddress": "7965 Michael St",
         "addressLocality": "Niagara Falls",
         "addressRegion": "ON",
-        "postalCode": "L2E 2L5",
+        "postalCode": "L2H 2B6",
         "addressCountry": "CA"
-      }
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.0818,
+        "longitude": -79.1246
+      },
+      "sameAs": [
+        "https://share.google/b3CXC9fzBbWsFF5Mg"
+      ]
     },
     "areaServed": [
       { "@type": "City", "name": "Niagara Falls" },
       { "@type": "City", "name": "St. Catharines" },
-      { "@type": "City", "name": "Welland" }
+      { "@type": "City", "name": "Welland" },
+      { "@type": "City", "name": "Fenwick" },
+      { "@type": "City", "name": "Hamilton" }
     ],
     "description": "Comprehensive local residential and commercial garage door repair near you in Niagara Falls and Niagara Region. Same-day emergency service for broken springs, off-track doors, snapped cables, and openers."
   }
@@ -63,7 +73,10 @@
   <!-- Emergency Top Bar -->
   <aside class="emergency-topbar">
     <div class="container emergency-topbar-inner">
-      <div><span class="emergency-badge"><span class="pulse-dot"></span> Local Niagara Dispatch</span> <strong>Technicians Near You in Niagara Falls, St. Catharines & Welland</strong></div>
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <span class="emergency-badge"><span class="pulse-dot"></span> Local Niagara Dispatch</span>
+        <span>🏆 Three Best Rated® 2026 Winner · <strong>Technicians Near You in Niagara Falls, St. Catharines, Welland & Hamilton</strong></span>
+      </div>
       <a href="tel:2897838146" class="topbar-phone">📞 (289) 783-8146</a>
     </div>
   </aside>
@@ -78,6 +91,11 @@
           <span class="brand-subtitle">Niagara Region, ON</span>
         </div>
       </a>
+
+      <!-- Three Best Rated Award Seal -->
+      <div class="header-award-wrap" title="Three Best Rated® Award Winner 2026 - Acme Garage Doors">
+        <img src="assets/three-best-rated-award.png" alt="Three Best Rated Award 2026 Winner - Garage Door Repair" class="header-award-seal">
+      </div>
       <nav class="main-nav" aria-label="Main Navigation">
         <a href="/" class="nav-link">Home</a>
         <a href="about-us.html" class="nav-link">About Us</a>
@@ -87,9 +105,25 @@
         <a href="24-hour-garage-door-repair-niagara-region.html" class="nav-link">24/7 Emergency</a>
         <a href="garage-door-installation-niagara.html" class="nav-link">New Doors</a>
         <a href="contact-us.html" class="nav-link">Contact Us</a>
+
+        <!-- Mobile Drawer Bottom CTA -->
+        <div class="mobile-nav-cta">
+          <a href="tel:2897838146" class="btn btn-emergency">
+            🚨 Call Dispatch: (289) 783-8146
+          </a>
+          <div class="mobile-nav-info">
+            <span>⏱️ 25–40m Niagara Response</span>
+            <span>⭐ 5.0 Google Rating (133+ Reviews)</span>
+          </div>
+        </div>
       </nav>
       <div class="header-actions">
-        <a href="tel:2897838146" class="btn btn-emergency btn-sm">📞 (289) 783-8146</a>
+        <a href="tel:2897838146" class="btn btn-emergency btn-sm header-call-btn">📞 (289) 783-8146</a>
+        <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
       </div>
     </div>
   </header>
@@ -119,20 +153,28 @@
         <form class="quick-form lead-capture-form">
           <input type="hidden" name="service" value="Garage Door Repair Near Me">
           <div class="form-group">
-            <label>Your Name</label>
+            <label>Your Name *</label>
             <input type="text" name="name" class="form-control" required placeholder="Full Name">
           </div>
           <div class="form-group">
-            <label>Phone Number</label>
+            <label>Phone Number *</label>
             <input type="tel" name="phone" class="form-control" required placeholder="(289) 555-0123">
           </div>
           <div class="form-group">
-            <label>Niagara Location</label>
-            <select name="city" class="form-control">
+            <label>Street Address / Dispatch Location *</label>
+            <input type="text" name="address" class="form-control" required placeholder="e.g. 7965 Michael St, Niagara Falls">
+          </div>
+          <div class="form-group">
+            <label>Niagara Location *</label>
+            <select name="city" class="form-control" required>
               <option value="Niagara Falls">Niagara Falls</option>
               <option value="St. Catharines">St. Catharines</option>
               <option value="Welland">Welland</option>
               <option value="Thorold">Thorold</option>
+              <option value="Fenwick / Pelham">Fenwick / Pelham</option>
+              <option value="Hamilton">Hamilton</option>
+              <option value="Fort Erie">Fort Erie</option>
+              <option value="Niagara-on-the-Lake">Niagara-on-the-Lake</option>
             </select>
           </div>
           <button type="submit" class="btn btn-primary" style="width: 100%;">Dispatch Technician</button>
@@ -143,7 +185,7 @@
 
   <!-- Detailed Service Content -->
   <section class="section">
-    <div class="container" style="max-width: 900px;">
+    <div class="container-narrow">
       <h2>Why Homeowners Choose Acme for Garage Door Repair in Niagara Falls</h2>
       <p>
         A malfunctioning garage door is more than an inconvenience — it is a serious home security risk and a critical safety hazard. Whether your car is locked inside before your morning commute, a spring snapped with a loud boom, or the door is dangling crooked off the tracks, Acme Garage Doors is equipped to resolve the issue on our very first visit.
@@ -159,7 +201,7 @@
       </ul>
 
       <h3 style="margin-top: 2rem;">Our 4-Step Local Repair Process</h3>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+      <div class="responsive-grid-even">
         <div style="background: #f8fafc; border: 1px solid var(--border-subtle); padding: 1.25rem; border-radius: var(--radius-md);">
           <h4>1. 25-Point System Diagnostic</h4>
           <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0;">We inspect springs, cables, rollers, pulleys, drums, and opener force limits to locate the root failure.</p>
@@ -179,7 +221,7 @@
       </div>
 
       <div style="margin: 2rem 0; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md);">
-        <img src="assets/technician-van.jpg" alt="Acme Garage Doors Niagara 24/7 Service Van" style="width: 100%; height: 360px; object-fit: cover;">
+        <img src="assets/technician-van.jpg" alt="Acme Garage Doors Niagara 24/7 Service Van" class="responsive-img-hero">
       </div>
 
       <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: var(--radius-md); padding: 1.75rem; margin-top: 2.5rem; text-align: center;">
@@ -190,10 +232,22 @@
     </div>
   </section>
 
+  <!-- Mobile Sticky Bottom Conversion Bar -->
+  <aside class="mobile-sticky-bar" aria-label="Quick Mobile Actions">
+    <div class="mobile-sticky-inner">
+      <a href="tel:2897838146" class="btn btn-emergency btn-sticky-call">
+        <span class="pulse-dot"></span> 📞 Call (289) 783-8146
+      </a>
+      <a href="contact-us.html#contact-form-section" class="btn btn-primary btn-sticky-quote">
+        ⚡ Free Quote
+      </a>
+    </div>
+  </aside>
+
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-bottom">
-      <div>© 2026 Acme Garage Doors. 4520 Queen Street, Niagara Falls, ON. Call (289) 783-8146 · <a href="mailto:acmegd.11@gmail.com" style="color: #5eead4;">acmegd.11@gmail.com</a></div>
+      <div>© 2026 Acme Garage Doors. 7965 Michael St, Niagara Falls, ON L2H 2B6. Call (289) 783-8146 · <a href="mailto:acmegd.11@gmail.com" style="color: #5eead4;">acmegd.11@gmail.com</a> · <a href="https://share.google/b3CXC9fzBbWsFF5Mg" target="_blank" rel="noopener noreferrer" style="color: #5eead4;">Google Reviews 5.0★ ↗</a></div>
       <div><a href="/" style="color: #cbd5e1;">Home</a> · <a href="about-us.html" style="color: #cbd5e1;">About Us</a> · <a href="contact-us.html" style="color: #cbd5e1;">Contact Us</a></div>
     </div>
   </footer>

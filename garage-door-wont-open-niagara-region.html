@@ -45,7 +45,10 @@
 
   <aside class="emergency-topbar">
     <div class="container emergency-topbar-inner">
-      <div><span class="emergency-badge"><span class="pulse-dot"></span> Car Trapped Inside?</span> <strong>Emergency Dispatch Active Across Niagara Falls, St. Catharines & Welland</strong></div>
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <span class="emergency-badge"><span class="pulse-dot"></span> Car Trapped Inside?</span>
+        <span>🏆 Three Best Rated® 2026 Winner · <strong>Emergency Dispatch Active Across Niagara Falls, St. Catharines & Welland</strong></span>
+      </div>
       <a href="tel:2897838146" class="topbar-phone">📞 (289) 783-8146</a>
     </div>
   </aside>
@@ -59,6 +62,11 @@
           <span class="brand-subtitle">Niagara Region, ON</span>
         </div>
       </a>
+
+      <!-- Three Best Rated Award Seal -->
+      <div class="header-award-wrap" title="Three Best Rated® Award Winner 2026 - Acme Garage Doors">
+        <img src="assets/three-best-rated-award.png" alt="Three Best Rated Award 2026 Winner - Garage Door Repair" class="header-award-seal">
+      </div>
       <nav class="main-nav" aria-label="Main Navigation">
         <a href="/" class="nav-link">Home</a>
         <a href="about-us.html" class="nav-link">About Us</a>
@@ -66,9 +74,25 @@
         <a href="broken-spring-replacement-niagara-falls.html" class="nav-link">Springs</a>
         <a href="garage-door-wont-open-niagara-region.html" class="nav-link active">Won't Open</a>
         <a href="contact-us.html" class="nav-link">Contact Us</a>
+
+        <!-- Mobile Drawer Bottom CTA -->
+        <div class="mobile-nav-cta">
+          <a href="tel:2897838146" class="btn btn-emergency">
+            🚨 Call Dispatch: (289) 783-8146
+          </a>
+          <div class="mobile-nav-info">
+            <span>⏱️ 25–40m Niagara Response</span>
+            <span>⭐ 5.0 Google Rating (133+ Reviews)</span>
+          </div>
+        </div>
       </nav>
       <div class="header-actions">
-        <a href="tel:2897838146" class="btn btn-emergency btn-sm">📞 (289) 783-8146</a>
+        <a href="tel:2897838146" class="btn btn-emergency btn-sm header-call-btn">📞 (289) 783-8146</a>
+        <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
       </div>
     </div>
   </header>
@@ -97,12 +121,29 @@
         <form class="quick-form lead-capture-form">
           <input type="hidden" name="service" value="Garage Door Won't Open">
           <div class="form-group">
-            <label>Your Name</label>
+            <label>Your Name *</label>
             <input type="text" name="name" class="form-control" required placeholder="Full Name">
           </div>
           <div class="form-group">
-            <label>Phone Number</label>
+            <label>Phone Number *</label>
             <input type="tel" name="phone" class="form-control" required placeholder="(289) 555-0123">
+          </div>
+          <div class="form-group">
+            <label>Street Address / Dispatch Location *</label>
+            <input type="text" name="address" class="form-control" required placeholder="e.g. 7965 Michael St, Niagara Falls">
+          </div>
+          <div class="form-group">
+            <label>City / Location *</label>
+            <select name="city" class="form-control" required>
+              <option value="Niagara Falls">Niagara Falls</option>
+              <option value="St. Catharines">St. Catharines</option>
+              <option value="Welland">Welland</option>
+              <option value="Thorold">Thorold</option>
+              <option value="Fenwick / Pelham">Fenwick / Pelham</option>
+              <option value="Hamilton">Hamilton</option>
+              <option value="Fort Erie">Fort Erie</option>
+              <option value="Niagara-on-the-Lake">Niagara-on-the-Lake</option>
+            </select>
           </div>
           <div class="form-group">
             <label>What Happens When You Press the Button?</label>
@@ -121,14 +162,14 @@
   </section>
 
   <section class="section">
-    <div class="container" style="max-width: 900px;">
+    <div class="container-narrow">
       <h2>The 5 Most Common Reasons Your Garage Door Won't Open</h2>
 
       <div style="display: flex; flex-direction: column; gap: 1.75rem; margin-top: 1.5rem;">
         <div style="background: #ffffff; border: 1px solid var(--border-subtle); padding: 1.5rem; border-radius: var(--radius-md);">
           <h4>1. The Torsion Spring Has Snapped</h4>
           <p style="color: var(--text-muted); font-size: 0.92rem;">
-            When a spring breaks, the opener cannot safely pull the unassisted 200–300+ lb door. Look above the top panel: if you see a 2-inch gap where a continuous coil used to be, your spring has failed. <em>Do not try to force it open with the opener.</em>
+            When a spring breaks, the opener cannot safely pull the unassisted 200–300+ lb door. Look above the top panel: if you see a 2-inch gap where a continuous coil used to be, your spring has failed. <em>Do not try to force it open with the opener.</em> Acme provides complete high-cycle (15,000+) spring replacement with upfront pricing of <strong>$250–$350 including installation and a 1 Year Spring Warranty</strong>.
           </p>
         </div>
 
@@ -167,9 +208,21 @@
     </div>
   </section>
 
+  <!-- Mobile Sticky Bottom Conversion Bar -->
+  <aside class="mobile-sticky-bar" aria-label="Quick Mobile Actions">
+    <div class="mobile-sticky-inner">
+      <a href="tel:2897838146" class="btn btn-emergency btn-sticky-call">
+        <span class="pulse-dot"></span> 📞 Call (289) 783-8146
+      </a>
+      <a href="contact-us.html#contact-form-section" class="btn btn-primary btn-sticky-quote">
+        ⚡ Free Quote
+      </a>
+    </div>
+  </aside>
+
   <footer class="site-footer">
     <div class="container footer-bottom">
-      <div>© 2026 Acme Garage Doors. Niagara Stuck Door Specialists. Call (289) 783-8146 · <a href="mailto:acmegd.11@gmail.com" style="color: #5eead4;">acmegd.11@gmail.com</a></div>
+      <div>© 2026 Acme Garage Doors. 7965 Michael St, Niagara Falls, ON L2H 2B6. Call (289) 783-8146 · <a href="mailto:acmegd.11@gmail.com" style="color: #5eead4;">acmegd.11@gmail.com</a> · <a href="https://share.google/b3CXC9fzBbWsFF5Mg" target="_blank" rel="noopener noreferrer" style="color: #5eead4;">Google Reviews 5.0★ ↗</a></div>
       <div><a href="/" style="color: #cbd5e1;">Home</a> · <a href="about-us.html" style="color: #cbd5e1;">About Us</a> · <a href="contact-us.html" style="color: #cbd5e1;">Contact Us</a></div>
     </div>
   </footer>

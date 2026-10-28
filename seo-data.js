@@ -12,21 +12,22 @@ const SEO_DATA = {
     phoneHref: "tel:2897838146",
     email: "acmegd.11@gmail.com",
     address: {
-      streetAddress: "4520 Queen Street",
+      streetAddress: "7965 Michael St",
       addressLocality: "Niagara Falls",
       addressRegion: "ON",
-      postalCode: "L2E 2L5",
+      postalCode: "L2H 2B6",
       addressCountry: "CA"
     },
     geo: {
-      latitude: "43.1070",
-      longitude: "-79.0664"
+      latitude: "43.0818",
+      longitude: "-79.1246"
     },
     rating: {
       ratingValue: "5.0",
       reviewCount: 133,
       bestRating: "5",
-      worstRating: "1"
+      worstRating: "1",
+      googleReviewsUrl: "https://share.google/b3CXC9fzBbWsFF5Mg"
     },
     openingHours: [
       "Mo-Su 00:00-23:59" // 24/7 Emergency Service
@@ -42,7 +43,9 @@ const SEO_DATA = {
       "Pelham, ON",
       "Port Colborne, ON",
       "Grimsby, ON",
-      "Lincoln, ON"
+      "Lincoln, ON",
+      "Fenwick, ON",
+      "Hamilton, ON"
     ]
   },
 
@@ -70,9 +73,9 @@ const SEO_DATA = {
       difficulty: "Medium (38)",
       targetUrl: "/broken-spring-replacement-niagara-falls",
       pageTitle: "Broken Garage Door Spring Replacement Niagara Falls | High-Cycle Springs",
-      metaDesc: "Snapped or broken garage door spring? DANGER: Do not operate door! Acme installs commercial-grade 20,000+ cycle torsion springs in Niagara. Call 289-783-8146.",
+      metaDesc: "Snapped or broken garage door spring? DANGER: Do not operate door! Acme installs commercial-grade 15,000+ cycle torsion springs in Niagara. Call 289-783-8146.",
       h1: "Same-Day Broken Garage Door Spring Replacement in Niagara Falls",
-      coreFocus: "Warning signs, loud pop sound, high-cycle oil-tempered springs vs builder grade, dual spring balance, safety inspection."
+      coreFocus: "Warning signs, loud pop sound, high-cycle 15,000+ oil-tempered springs vs builder grade, 1 Year Warranty, safety inspection."
     },
     {
       id: "kw-wont-open",
@@ -237,6 +240,22 @@ const SEO_DATA = {
       date: "3 weeks ago",
       service: "24-Hour Emergency Service",
       text: "Got home from Toronto late at night in a freezing rainstorm and the garage door refused to budge. Acme answered the emergency line right away and dispatched a technician. Replaced a broken sensor bracket and had us parked inside out of the ice. Lifesavers!"
+    },
+    {
+      author: "Frank B.",
+      location: "Fenwick, ON (Pelham Ridge)",
+      rating: 5,
+      date: "1 week ago",
+      service: "Heavy-Duty R-18 Insulated Overhead Door",
+      text: "We needed maximum insulation for our workshop in Fenwick with freezing winds sweeping across the ridge. Acme installed an R-18 insulated door with commercial dual-fin bottom weatherstripping. Night and day temperature difference, whisper-quiet operation."
+    },
+    {
+      author: "Carmine P.",
+      location: "Hamilton, ON (Hamilton Mountain)",
+      rating: 5,
+      date: "2 weeks ago",
+      service: "Emergency Torsion Spring & Cable Overhaul",
+      text: "Spring snapped on Sunday afternoon on the Mountain. Acme drove out from Niagara within 45 minutes, replaced both springs with 15,000-cycle oil-tempered springs, and replaced our frayed cables. Fair price, top-notch workmanship!"
     }
   ],
 
@@ -252,7 +271,7 @@ const SEO_DATA = {
       recommendedService: "Broken Spring Replacement",
       targetUrl: "/broken-spring-replacement-niagara-falls",
       turnaround: "Same-Day (usually within 1-2 hours)",
-      estimatedRange: "$180 - $290 (parts + labour, high-cycle spring pairs)"
+      estimatedRange: "$250 - $350 (including installation & high-cycle 15,000+ springs)"
     },
     {
       id: "off-track",

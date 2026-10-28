@@ -13,18 +13,120 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ==========================================================================
-   1. Mobile Menu Toggle
+   1. Professional Mobile Menu Drawer & Touch Navigation
    ========================================================================== */
 function initMobileMenu() {
   const toggleBtn = document.querySelector(".mobile-nav-toggle");
   const mainNav = document.querySelector(".main-nav");
 
-  if (toggleBtn && mainNav) {
-    toggleBtn.addEventListener("click", () => {
-      mainNav.classList.toggle("open");
-      toggleBtn.innerHTML = mainNav.classList.contains("open") ? "✕" : "☰";
-    });
+  if (!toggleBtn || !mainNav) return;
+
+  // Ensure backdrop overlay exists in the DOM
+  let backdrop = document.querySelector(".mobile-nav-backdrop");
+  if (!backdrop) {
+    backdrop = document.createElement("div");
+    backdrop.className = "mobile-nav-backdrop";
+    document.body.appendChild(backdrop);
   }
+
+  // Inject sleek sticky drawer header with brand & close button if not already present
+  if (!mainNav.querySelector(".mobile-drawer-header")) {
+    const drawerHeader = document.createElement("div");
+    drawerHeader.className = "mobile-drawer-header";
+    drawerHeader.innerHTML = `
+      <div class="mobile-drawer-brand">
+        <img src="assets/acme-logo.png" alt="Acme Logo" class="mobile-drawer-logo">
+        <div class="mobile-drawer-title">
+          <div class="mobile-drawer-name">ACME <span>GARAGE DOORS</span></div>
+          <span class="mobile-drawer-sub">Niagara Region · 24/7 Dispatch</span>
+        </div>
+      </div>
+      <button type="button" class="mobile-drawer-close" aria-label="Close navigation menu">✕</button>
+    `;
+    mainNav.prepend(drawerHeader);
+
+    const closeBtn = drawerHeader.querySelector(".mobile-drawer-close");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        closeMenu();
+      });
+    }
+  }
+
+  function openMenu() {
+    mainNav.classList.add("open");
+    toggleBtn.classList.add("is-active");
+    toggleBtn.setAttribute("aria-expanded", "true");
+    backdrop.classList.add("is-active");
+    document.body.classList.add("nav-open");
+  }
+
+  function closeMenu() {
+    mainNav.classList.remove("open");
+    toggleBtn.classList.remove("is-active");
+    toggleBtn.setAttribute("aria-expanded", "false");
+    backdrop.classList.remove("is-active");
+    document.body.classList.remove("nav-open");
+  }
+
+  toggleBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (mainNav.classList.contains("open")) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  // Clicking backdrop closes drawer
+  backdrop.addEventListener("click", (e) => {
+    e.preventDefault();
+    closeMenu();
+  });
+
+  // Close on Escape key
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && mainNav.classList.contains("open")) {
+      closeMenu();
+    }
+  });
+
+  // Auto-close on desktop resize
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 992 && mainNav.classList.contains("open")) {
+      closeMenu();
+    }
+  });
+
+  // Handle dropdown accordions on mobile devices
+  const dropdownParents = mainNav.querySelectorAll(".nav-item-dropdown");
+  dropdownParents.forEach(dropdown => {
+    const toggleLink = dropdown.querySelector(".dropdown-toggle-link, .nav-link");
+    if (!toggleLink) return;
+
+    toggleLink.addEventListener("click", (e) => {
+      if (window.innerWidth <= 992) {
+        e.preventDefault();
+        e.stopPropagation();
+        dropdown.classList.toggle("dropdown-open");
+        const isOpen = dropdown.classList.contains("dropdown-open");
+        toggleLink.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      }
+    });
+  });
+
+  // Auto-close drawer when clicking normal navigation links or dropdown items
+  const navLinks = mainNav.querySelectorAll(".nav-link:not(.dropdown-toggle-link), .dropdown-item, .mobile-nav-cta a");
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      if (window.innerWidth <= 992) {
+        closeMenu();
+      }
+    });
+  });
 }
 
 /* ==========================================================================
@@ -234,6 +336,7 @@ function initLeadForms() {
         name: formData.get("name") || "Homeowner",
         phone: formData.get("phone") || "289-xxx-xxxx",
         email: formData.get("email") || "acmegd.11@gmail.com",
+        address: formData.get("address") || "Not provided",
         city: formData.get("city") || "Niagara Falls",
         service: formData.get("service") || "Inquiry",
         details: formData.get("message") || "Submitted via Contact Us page",
@@ -259,11 +362,12 @@ function initLeadForms() {
           Name: lead.name,
           Phone: lead.phone,
           Email: lead.email,
+          Address: lead.address,
           City: lead.city,
           Service: lead.service,
           Urgency: lead.urgency,
           Message: lead.details,
-          _subject: `New Service Request: ${lead.service} in ${lead.city} (${lead.phone})`
+          _subject: `New Service Request: ${lead.service} in ${lead.city} - ${lead.address} (${lead.phone})`
         })
       })
       .then(response => response.json())
@@ -304,6 +408,7 @@ function initLeadForms() {
         id: "LEAD-" + Date.now().toString().slice(-6),
         name: formData.get("name") || "Homeowner",
         phone: formData.get("phone") || "289-xxx-xxxx",
+        address: formData.get("address") || "Not provided",
         city: formData.get("city") || "Niagara Falls",
         service: formData.get("service") || "Emergency Repair",
         details: formData.get("details") || "Quote request submitted via web",
@@ -320,10 +425,11 @@ function initLeadForms() {
           body: JSON.stringify({
             Name: lead.name,
             Phone: lead.phone,
+            Address: lead.address,
             City: lead.city,
             Service: lead.service,
             Details: lead.details,
-            _subject: `Quick Dispatch Request: ${lead.service} - ${lead.city} (${lead.phone})`
+            _subject: `Quick Dispatch Request: ${lead.service} - ${lead.city} - ${lead.address} (${lead.phone})`
           })
         }).catch(err => console.log("Background email logged:", err));
       } catch (err) {}
@@ -774,16 +880,16 @@ function renderModule6TechAudit() {
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "4520 Queen Street",
+      "streetAddress": "7965 Michael St",
       "addressLocality": "Niagara Falls",
       "addressRegion": "ON",
-      "postalCode": "L2E 2L5",
+      "postalCode": "L2H 2B6",
       "addressCountry": "CA"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 43.1070,
-      "longitude": -79.0664
+      "latitude": 43.0818,
+      "longitude": -79.1246
     },
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
